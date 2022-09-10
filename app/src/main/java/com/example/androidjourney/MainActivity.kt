@@ -14,4 +14,38 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        Log.d(Tag,"onStart")
+    }
+
+    override fun onResume() {
+        Log.d(Tag,"onResume")
+        super.onResume()
+
+    }
+
+    override fun onPause() {
+        Log.d(Tag,"onPause")
+        super.onPause()
+
+    }
+
+    override fun onStop() {
+        Log.d(Tag,"onStop")
+        super.onStop()
+
+    }
+
+    override fun onRestart() {
+        Log.d(Tag,"onRestart")
+        super.onRestart()
+    }
+
+    override fun onDestroy() {
+        Log.d(Tag,"onDestroy")
+        super.onDestroy()
+    }
+
 }
