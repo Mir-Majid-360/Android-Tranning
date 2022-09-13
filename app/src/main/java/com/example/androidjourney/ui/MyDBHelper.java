@@ -2,8 +2,11 @@ package com.example.androidjourney.ui;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 
 public class MyDBHelper extends SQLiteOpenHelper {
@@ -50,4 +53,24 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
 
     }
+
+
+    public ArrayList<ContactModel> fetchContacts(){
+
+        SQLiteDatabase db =this.getReadableDatabase();
+          Cursor cursor= db.rawQuery("SELECT * FROM "+ TABLE_CONTACT,null);
+
+          ArrayList<ContactModel> arrContacts = new ArrayList<>();
+
+          while (cursor.moveToNext()){
+              ContactModel contactModel = new ContactModel();
+              contactModel.id = cursor.getInt(0);
+              contactModel.name = cursor.getString(1);
+              contactModel.phone_no = cursor.getString(2);
+
+              arrContacts.add(contactModel);
+          }
+          return arrContacts;
+    }
+
 }
